@@ -57,7 +57,6 @@ export class CoachTreeComponent implements OnInit, OnDestroy {
             }
           }
         html += '</ul>';
-        html += '';
 
       };
 
@@ -67,5 +66,13 @@ export class CoachTreeComponent implements OnInit, OnDestroy {
       }
 
       this.treeView.nativeElement.innerHTML += html;
+  }
+
+  onClickDelete(id: string): void {
+    const subscription = this.formDataService.deleteItem(id).subscribe((response) => {
+      this.loadCoaches();
+    });
+
+    this.subscriptions.add(subscription);
   }
 }

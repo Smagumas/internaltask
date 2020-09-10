@@ -25,4 +25,8 @@ export class FormDataService {
     fullNameValidation(fullName: string): Observable<any> {
       return this.httpClient.get<string>(`${environment.api}/forms/fullNameValidation?fullName=${fullName}`, this.httpOptions);
     }
+
+    deleteItem(id: string): Observable<any> {
+      return this.httpClient.delete<any>(`${environment.api}/forms/delete?fullName=${id}`, this.httpOptions);
+    }
 }

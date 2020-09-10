@@ -50,6 +50,30 @@ router.post('/create', function(req, res, next) {
   
 });
 
+router.delete('/delete', function(req, res, next) {
+  fs.readFile('data.json', 'utf8', function readFileCallback(err, data){
+    if (err){
+        res.send('error');
+    } else {
+      let readData = JSON.parse(data);
+      let requestBody = req.body;
+
+      const index = readData.indexOf(function(data) {
+        return data.id === query;
+      });
+
+      readData.splice(index, 1);
+    
+      json = JSON.stringify(readData); //convert it back to json
+      fs.writeFile('data.json', json, 'utf8', function callback() {
+        res.send({response: 'OK'});
+      });
+
+    }
+  });
+  
+});
+
 function isFullNameValid(query, readData) {
   if (query && readData) {
     const foundObject = readData.find(function(data) {
