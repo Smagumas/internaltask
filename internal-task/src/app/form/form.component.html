@@ -1,0 +1,24 @@
+<div class="form">
+  <form class="createForm" name="createForm" #createForm="ngForm">
+    <div>
+      <label for="fullName">Full name</label>
+      <input name="fullName" type="text" [(ngModel)]="newForm.fullName" required maxlength="64" minlength="3">
+    </div>
+    <div>
+      <label for="email">Email</label>
+      <input name="email" type="email" [(ngModel)]="newForm.email" required>
+    </div>
+    <div>
+      <label for="selectCoach">Select Coach</label>
+      <select name="selectCoach" [(ngModel)]="newForm.coachId" required>
+        <option *ngFor="let coach of coaches" [ngValue]="coach.id">{{coach.fullName}}</option>
+      </select>
+    </div>
+
+    <span *ngIf="hasError">
+      Form Invalid
+    </span>
+
+    <button type="submit" (click)="onClickCreate()">Create</button>
+  </form>
+</div>
