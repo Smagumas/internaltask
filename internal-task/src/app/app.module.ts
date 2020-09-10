@@ -7,11 +7,13 @@ import { AppComponent } from './app.component';
 import { FormComponent } from './form/form.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormDataService } from './form/form.data.service';
+import { CoachTreeComponent } from './coach-tree/coach-tree.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    FormComponent
+    FormComponent,
+    CoachTreeComponent
   ],
   imports: [
     BrowserModule,

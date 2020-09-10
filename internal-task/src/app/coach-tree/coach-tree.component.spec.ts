@@ -1,21 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { FormComponent } from './form.component';
-import { FormDataService } from './form.data.service';
+import { CoachTreeComponent } from './coach-tree.component';
 
-describe('FormComponent', () => {
-  let component: FormComponent;
-  let fixture: ComponentFixture<FormComponent>;
+xdescribe('CoachTreeComponent', () => {
+  let component: CoachTreeComponent;
+  let fixture: ComponentFixture<CoachTreeComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ FormComponent ]
+      declarations: [ CoachTreeComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(FormComponent);
+    fixture = TestBed.createComponent(CoachTreeComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -1,24 +1,26 @@
 <div class="form">
-  <form class="createForm" name="createForm" #createForm="ngForm">
-    <div>
+  <form class="createForm" name="createForm" (ngSubmit)="onSubmitCreate()" #createForm="ngForm">
+    <div class="formItem">
       <label for="fullName">Full name</label>
-      <input name="fullName" type="text" [(ngModel)]="newForm.fullName" required maxlength="64" minlength="3">
+      <input name="fullName" type="text" (change)="onFullNameChange()" [(ngModel)]="newForm.fullName" required>
     </div>
-    <div>
+    <div class="error" *ngIf="fullNameError">{{fullNameError}}</div>
+    <div class="formItem">
       <label for="email">Email</label>
-      <input name="email" type="email" [(ngModel)]="newForm.email" required>
+      <input name="email" type="email" (change)="onEmailChange()" [(ngModel)]="newForm.email" required>
     </div>
-    <div>
+    <div class="error" *ngIf="emailError">{{emailError}}</div>
+    <div class="formItem">
       <label for="selectCoach">Select Coach</label>
-      <select name="selectCoach" [(ngModel)]="newForm.coachId" required>
-        <option *ngFor="let coach of coaches" [ngValue]="coach.id">{{coach.fullName}}</option>
+      <select name="selectCoach" [(ngModel)]="newForm.coachId">
+        <option *ngFor="let coach of forms" [ngValue]="coach.id">{{coach.fullName}}</option>
       </select>
     </div>
 
-    <span *ngIf="hasError">
-      Form Invalid
+    <span class="error" *ngIf="hasError">
+      Fill in necessary fields
     </span>
 
-    <button type="submit" (click)="onClickCreate()">Create</button>
+    <button class="submitButton" type="submit">Create</button>
   </form>
 </div>

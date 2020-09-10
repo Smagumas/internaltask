@@ -3,7 +3,6 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { FormModel } from './form.model';
-import { CoachModel } from './coach.model';
 
 @Injectable()
 export class FormDataService {
@@ -23,7 +22,7 @@ export class FormDataService {
       return this.httpClient.post<FormModel>(`${environment.api}/forms/create`, form, this.httpOptions);
     }
 
-    getCoaches(): Observable<CoachModel[]> {
-      return this.httpClient.get<CoachModel[]>(`${environment.api}/coaches/`, this.httpOptions);
+    fullNameValidation(fullName: string): Observable<any> {
+      return this.httpClient.get<string>(`${environment.api}/forms/fullNameValidation?fullName=${fullName}`, this.httpOptions);
     }
 }
